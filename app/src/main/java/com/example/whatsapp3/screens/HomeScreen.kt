@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,8 +17,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -57,27 +61,37 @@ private val contactos = listOf(
     Contact("Maria Cuñada", "Gordita nos vemos mañana"),
     Contact("Juanma", "Mañana a las 10:00"),
     Contact("Juan2", "p")
-
-
-
 )
 
+/**
+ * Pantalla principal de la aplicación que muestra la lista de contactos.
+ *
+ * @param navController Controlador de navegación para navegar entre pantallas.
+ */
 @Composable
 fun HomeScreen(navController: NavController){
     HomeBody(navController = navController)
 }
 
 
-
+/**
+ * Cuerpo de la pantalla principal que contiene el encabezado y la lista de contactos.
+ *
+ * @param navController Controlador de navegación para navegar entre pantallas.
+ */
 @Composable
 fun HomeBody(navController: NavController){
-    Column (modifier = Modifier.fillMaxSize().padding(top = 30.dp, bottom = 16.dp)){
+    Column (modifier = Modifier.fillMaxSize()){
         HeaderHome()
 
         Listado(navController)
     }
 }
 
+
+/**
+ * Encabezado de la pantalla principal, que incluye el título y los iconos para realizar acciones adicionales.
+ */
 @Composable
 fun HeaderHome(){
     Row(verticalAlignment = Alignment.CenterVertically,
@@ -122,6 +136,11 @@ fun HeaderHome(){
     }
 }
 
+/**
+ * Lista de contactos, que se muestra en forma de lista vertical desplazable.
+ *
+ * @param navController Controlador de navegación para navegar entre pantallas.
+ */
 @Composable
 fun Listado(navController: NavController){
     LazyColumn (
@@ -133,6 +152,14 @@ fun Listado(navController: NavController){
     }
 }
 
+
+/**
+ * Elemento individual de la lista que muestra el nombre y mensaje de cada contacto.
+ * Permite navegar a la pantalla de chat al hacer clic sobre un contacto.
+ *
+ * @param contacto Objeto que contiene el nombre y el mensaje reciente del contacto.
+ * @param navController Controlador de navegación para navegar a la pantalla de chat.
+ */
 @Composable
 fun Chat(contacto: Contact, navController: NavController){
     Row(verticalAlignment = Alignment.CenterVertically,
