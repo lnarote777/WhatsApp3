@@ -60,12 +60,23 @@ import kotlin.math.absoluteValue
 val mensaje = mutableStateOf("")
 var chats = mutableStateListOf<String>()
 
+/**
+ * Pantalla de chat donde se muestran los mensajes y la interfaz de usuario para interactuar con un contacto.
+ *
+ * @param navController Controlador de navegación para navegar entre pantallas.
+ * @param contactName Nombre del contacto con el que se está chateando.
+ */
 @Composable
 fun ChatScreen(navController: NavController, contactName: String?){
     ChatBody(navController = navController, contactName)
 }
 
-
+/**
+ * Cuerpo de la pantalla de chat que contiene el fondo, el encabezado del chat, la lista de mensajes y el campo de entrada de texto.
+ *
+ * @param navController Controlador de navegación para navegar entre pantallas.
+ * @param contactName Nombre del contacto con el que se está chateando.
+ */
 @Composable
 fun ChatBody(navController: NavController, contactName: String?){
     Box{
@@ -89,6 +100,11 @@ fun ChatBody(navController: NavController, contactName: String?){
 
 }
 
+/**
+ * Sección que muestra los mensajes del chat en una lista de desplazamiento.
+ *
+ * @param modifier Modificador para aplicar estilos adicionales a la lista de mensajes.
+ */
 @Composable
 fun ChatSection(modifier: Modifier){
     LazyColumn(
@@ -108,6 +124,12 @@ fun ChatSection(modifier: Modifier){
     }
 }
 
+/**
+ * Componente que muestra un mensaje de chat, con un estilo distinto dependiendo de si es enviado por el usuario o por la otra persona.
+ *
+ * @param texto El texto del mensaje.
+ * @param isFromMe Indica si el mensaje fue enviado por el usuario (true) o por el contacto (false).
+ */
 @Composable
 fun Mensaje(
     texto: String?,
@@ -142,6 +164,12 @@ fun Mensaje(
     }
 
 
+/**
+ * Encabezado de la pantalla de chat que muestra el nombre del contacto y los íconos de interacción (volver, videollamada, llamar, opciones).
+ *
+ * @param navController Controlador de navegación para navegar entre pantallas.
+ * @param contactName Nombre del contacto con el que se está chateando.
+ */
 @Composable
 fun HeaderChat(navController: NavController, contactName: String?){
     Row(verticalAlignment = Alignment.CenterVertically,
@@ -195,6 +223,9 @@ fun HeaderChat(navController: NavController, contactName: String?){
     }
 }
 
+/**
+ * Campo de entrada de texto para escribir un mensaje, junto con un ícono para enviar el mensaje.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EntradaTexto2(){
